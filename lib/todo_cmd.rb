@@ -19,6 +19,12 @@ module TodoCmd
 
   case command
   when 'new'
+    new_task = ARGV.shift
+
+    File.open(TODO_FILE, 'a') do |file|
+      write_todo(file, new_task)
+      puts 'New task added.'
+    end
   when 'list'
   when 'done'
   end

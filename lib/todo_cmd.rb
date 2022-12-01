@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "todo_cmd/version"
+require_relative 'todo_cmd/version'
 
 module TodoCmd
   class Error < StandardError; end
-  
+
   TODO_FILE = 'todo.txt'
 
   def read_todo(line)
     line.chomp.split(/,/)
   end
-  
+
   def write_todo(file, name, created = Time.now, completed = '')
     file.puts "#{name}, #{created}, #{completed}"
   end
@@ -33,12 +33,9 @@ module TodoCmd
         printf("%3d - %s\n", counter, name)
         printf("  created : %s\n", created)
 
-        unless completed.nil?
-          printf("  completed : %s\n", completed)
-        end
+        printf("  completed : %s\n", completed) unless completed.nil?
         counter += 1
       end
-      
     end
   when 'done'
   end

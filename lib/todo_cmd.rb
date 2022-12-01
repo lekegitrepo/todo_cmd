@@ -26,6 +26,20 @@ module TodoCmd
       puts 'New task added.'
     end
   when 'list'
+    File.open(TODO_FILE, 'r') do |file|
+      counter = 1
+      file.readlines.each do |line|
+        name, created, completed = read_todo(line)
+        printf("%3d - %s\n", counter, name)
+        printf("  created : %s\n", created)
+
+        unless completed.nil?
+          printf("  completed : %s\n", completed)
+        end
+        counter += 1
+      end
+      
+    end
   when 'done'
   end
 end

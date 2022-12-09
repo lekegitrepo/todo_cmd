@@ -42,9 +42,9 @@ module TodoCmd
 
     File.open(TODO_FILE, 'r') do |file|
       File.open("#{TODO_FILE}.new", 'w') do |new_file|
-      counter = 1
+        counter = 1
         name, created, completed = read_todo(file)
-        
+
         if counter == task_number
           write_todo(new_file, name, created, Time.now)
           puts "Task #{counter} completed"
